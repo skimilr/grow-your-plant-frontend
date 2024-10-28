@@ -22,7 +22,7 @@ export default defineComponent({
         });
 
         const plantImage = computed(() => {
-            return plant.value ? require('@/assets/logo.png') : '';
+            return plant.value ? new URL('@/assets/logo.png', import.meta.url).href : '';
         });
 
         const fetchPlantStatus = async () => {
@@ -33,12 +33,12 @@ export default defineComponent({
         };
 
         const waterPlant = async () => {
-            await axios.post('/plant/action', { user_id: this.$store.state.userId, action: 'water' });
+            await axios.post('/plant/action', { user_id: userId, action: 'water' });
             fetchPlantStatus();
         };
 
         const feedPlant = async () => {
-            await axios.post('/plant/action', { user_id: this.$store.state.userId, action: 'feed' });
+            await axios.post('/plant/action', { user_id: userId, action: 'feed' });
             fetchPlantStatus();
         };
 
