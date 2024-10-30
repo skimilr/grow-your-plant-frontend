@@ -1,7 +1,7 @@
 <template>
     <div class="plant-container">
         <h1>Grow Plants!</h1>
-        <h3>🌱🌻 See how many you can grow... 🌺☀️</h3>
+        <h3>🌱☀️ See how many you can maintain... 🌺🌻</h3>
         <p><b>Hint:</b> Give them plenty of water and sunlight to keep them healthy</p>
 
         <div v-if="userId" class="plants-list">
@@ -19,10 +19,11 @@
                     </div>
                 </div>
             </div>
-            <div class="add-button">
-                <button @click="addNewPlant('sunflower')" class="action-button">+ 🌻 Sunflower</button>
-                <button @click="addNewPlant('redflower')" class="action-button">+ 🌺 Redflower</button>
-            </div>
+        </div>
+
+        <div class="add-button">
+            <button @click="addNewPlant('sunflower')" class="action-button">+ 🌻 Sunflower</button>
+            <button @click="addNewPlant('redflower')" class="action-button">+ 🌺 Redflower</button>
         </div>
 
         <div v-if="!userId" class="user-id-input">
@@ -106,7 +107,7 @@ export default defineComponent({
 
         const getPlantImage = (plant) => {
             var plantStage = plant.GrowthStage.toLowerCase();
-            return `/assets/stage_${plantStage}.png`;
+            return `/assets/sunflower_${plantStage}.png`;
         };
 
         const setUserId = async () => {
@@ -261,7 +262,7 @@ button:hover {
 
 .add-button {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin: 20px;
     min-width: 100px; 
